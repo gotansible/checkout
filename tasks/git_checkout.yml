@@ -1,12 +1,12 @@
 ---
 
-- set_fact:
-    checkout_local_random: "{{ 2147483647 |random }}"
-
-- set_fact:
-    checkout_local_path: "{{ checkout_local_temp_dir }}/{{ checkout_local_random }}"
-    checkout_local_keep: false
-    when: checkout_local_path|length == 0
+#- set_fact:
+#    checkout_local_random: "{{ 2147483647 |random }}"
+#
+#- set_fact:
+#    checkout_local_path: "{{ checkout_local_temp_dir }}/{{ checkout_local_random }}"
+#    checkout_local_keep: false
+#    when: checkout_local_path|length == 0
 
 - name: git checkout - create checkout local folder
   sudo: false

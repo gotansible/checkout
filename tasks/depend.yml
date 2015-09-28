@@ -12,7 +12,7 @@
     - git
     - curl
     - rsync
-  when: ansible_os_family == 'Debian'
+  when: checkout_install_local_dependencies and ansible_os_family == 'Debian'
 
 
 - name: depend - debian - install remote dependencies

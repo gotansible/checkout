@@ -3,8 +3,7 @@
   sudo: true
   roles:
     - role: checkout
-      checkout_repository: 'ssh://git@github.com:gotansible/checkout'
-      checkout_local_path: /tmp/ansible/checkout/test
-      checkout_remote_path: /opt/myapp/version
-      checkout_local_keep: true
-      #checkout_to: /tmp/ansible/checkout/test
+      checkout_repository: 'https://github.com/gotansible/checkout.git'
+      checkout_local_path: /tmp/ansible/checkout
+      checkout_remote_path: /opt/myapp
+      checkout_local_keep: false

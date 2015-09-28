@@ -5,13 +5,14 @@ checkout_version: master
 checkout_keyfile: ""
 
 checkout_remote_path: ~
-checkout_remote_exlcude: []
+checkout_remote_exlcude:
+  - .git
 
-checkout_local_path: /tmp
+checkout_local_path: /tmp/ansible/checkout
 checkout_local_keep: false
-
 
 checkout_local_temp_dir: /tmp/ansible
 checkout_local_random: ""
 
+checkout_install_local_dependencies: false
 

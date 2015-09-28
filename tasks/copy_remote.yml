@@ -1,9 +1,17 @@
 ---
 
-- name: copy remote
-   synchronize:
-     src={{ checkout_output_path }}
-     dest={{ checkout_path_remote }} 
-     rsync_opts={% for diskitem in checkout_remote_exlcude %}--exclude={{ diskitem|trim }}{% if not loop.last %},{% endif %}{% endfor %}
 
+- name: copy remote - create destination
+  file:
+    state=directory
+    path={{ checkout_remote_path }}
+
+- name: copy remote - rsync
+  synchronize:
+    src={{ checkout_local_path }}
+    dest={{ checkout_remote_path }}
+    #rsync_opts="{% for diskitem in checkout_remote_exlcude %}--exclude={{ diskitem|trim }}{% if not loop.last %},{% endif %}{% endfor %}"
+
+
+    #/{{ checkout_repository|basename|replace('.git', '') }}
 
