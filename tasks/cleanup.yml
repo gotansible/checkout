@@ -1,0 +1,10 @@
+---
+
+- name: cleanup - delete local
+  sudo: false
+  local_action:
+    module: file
+    state: absent
+    path: "{{ checkout_local_path }}/{{ checkout_repository | basename }}"
+  when: !checkout_local_keep and checkout_local_path|trim|length > 1
+

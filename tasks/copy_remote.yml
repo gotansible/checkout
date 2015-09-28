@@ -1,0 +1,9 @@
+---
+
+- name: copy remote
+   synchronize:
+     src={{ checkout_output_path }}
+     dest={{ checkout_path_remote }} 
+     rsync_opts={% for diskitem in checkout_remote_exlcude %}--exclude={{ diskitem|trim }}{% if not loop.last %},{% endif %}{% endfor %}
+
+

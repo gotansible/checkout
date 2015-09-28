@@ -1,0 +1,12 @@
+---
+
+- name: build - with commands
+  shell: "{{ item }}"
+  args:
+    chdir: "{{ checkout_private_path }}/"
+  environment:
+    SOMEVAR: ""
+    #PATH: "{{ ansible_env.PATH }}:{{ gobuild_goroot }}/bin:{{ gobuild_dir }}/bin"
+  with_items: checkout_build_commands
+  when: checkout_build_commands|length > 0
+

@@ -1,0 +1,30 @@
+---
+
+- name: depend - debian - install local dependencies
+  sudo: true
+  local_action:
+    module: apt
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+  with_items:
+    - git
+    - curl
+    - rsync
+  when: ansible_os_family == 'Debian'
+
+
+- name: depend - debian - install remote dependencies
+  sudo: true
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+  with_items:
+    - rsync
+  when: ansible_os_family == 'Debian'
+
+
+

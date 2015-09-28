@@ -1,0 +1,59 @@
+---
+
+- set_fact:
+    checkout_local_random: "{{ 2147483647 |random }}"
+
+- set_fact:
+    checkout_local_path: "{{ checkout_local_temp_dir }}/{{ checkout_local_random }}"
+    checkout_local_keep: false
+    when: checkout_local_path|length == 0
+
+- name: git checkout - create checkout local folder
+  sudo: false
+  local_action:
+    module: file
+    state: directory
+    path: "{{ checkout_local_path }}"
+
+- name: git checkout - get repo without key
+  sudo: false
+  local_action:
+    module: git
+    repo: "{{ checkout_repository }}"
+    version: "{{ checkout_version }}"
+    depth: 1
+    update: yes
+    accept_hostkey: yes
+    dest: "{{ checkout_local_path }}"
+    force: yes
+    recursive: yes
+  when: checkout_keyfile|length == 0
+
+- name: git checkout - get repo with key
+  sudo: false
+  local_action:
+    module: git
+    repo: "{{ checkout_repository }}"
+    version: "{{ checkout_version }}"
+    depth: 1
+    update: yes
+    accept_hostkey: yes
+    dest: "{{ checkout_local_path }}"
+    force: yes
+    recursive: yes
+    key_file: "{{ checkout_keyfile }}"
+  when: checkout_keyfile|length > 0
+
+#- name: git - get folder name
+#  sudo: false
+#  local_action:
+#    module: find
+#    paths: "{{ checkout_local_path }}/"
+#    file_type: directory
+#  register: local_path
+#
+#- set_fact:
+#    checkout_output_path: "{{ checkout_local_path }}/{{ local_path[0].path | basename }}"
+
+
+

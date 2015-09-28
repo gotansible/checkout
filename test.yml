@@ -1,0 +1,10 @@
+---
+- hosts: all
+  sudo: true
+  roles:
+    - role: checkout
+      checkout_repository: 'ssh://git@github.com:gotansible/checkout'
+      checkout_local_path: /tmp/ansible/checkout/test
+      checkout_remote_path: /opt/myapp/version
+      checkout_local_keep: true
+      #checkout_to: /tmp/ansible/checkout/test
