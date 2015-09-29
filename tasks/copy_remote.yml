@@ -8,9 +8,9 @@
 
 - name: copy remote - rsync
   synchronize:
-    src={{ checkout_local_path }}
+    src={{ checkout_local_path }}/
     dest={{ checkout_remote_path }}
-    #rsync_opts="{% for diskitem in checkout_remote_exlcude %}--exclude={{ diskitem|trim }}{% if not loop.last %},{% endif %}{% endfor %}"
+    rsync_opts="{% for diskitem in checkout_remote_exlcude %}--exclude={{ diskitem|trim }}{% if not loop.last %},{% endif %}{% endfor %}"
 
 
     #/{{ checkout_repository|basename|replace('.git', '') }}
