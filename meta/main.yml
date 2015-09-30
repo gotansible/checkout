@@ -2,24 +2,24 @@
 dependencies: []
 
 galaxy_info:
-  author: your name
-  description: 
-  company: your company (optional)
-  license: license (GPLv2, CC-BY, etc)
-  min_ansible_version: 1.8
-  #platforms:
-  #- name: Ubuntu
-  #  versions:
+  author: Franklin Wise 
+  description: used for checking out a git repo
+  company: gotansible
+  license: MIT
+  min_ansible_version: 1.9
+  platforms:
+  - name: Ubuntu
+    versions:
   #  - all
   #  - lucid
   #  - maverick
   #  - natty
   #  - oneiric
-  #  - precise
+    - precise
   #  - quantal
   #  - raring
   #  - saucy
-  #  - trusty
+    - trusty
   #- name: Debian
   #  versions:
   #  - all
@@ -92,7 +92,7 @@ galaxy_info:
   #  - 11SP2
   #  - 11SP3
   #
-  #categories:
+  categories:
   #- cloud
   #- cloud:ec2
   #- cloud:gce
@@ -101,10 +101,10 @@ galaxy_info:
   #- database
   #- database:nosql
   #- database:sql
-  #- development
+  - development
   #- monitoring
   #- networking
-  #- packaging
+  - packaging
   #- system
   #- web
 
